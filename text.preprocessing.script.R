@@ -3,8 +3,7 @@ dataset <- maml.mapInputPort(1) # class: data.frame
 
 library("tm")
 
-# Separate the label and tweet text 
-sentiment_label <- dataset[[1]]
+# We assume that the  tweet text is the second columns in the input dataset
 tweet_text      <- dataset[[2]]
 
 print("Convert to lowercase ....")
@@ -33,8 +32,10 @@ theCorpus <- tm_map(theCorpus, removeWords, stopwords("english"))
 print("Word stemming ....")
 theCorpus <- tm_map(theCorpus, stemDocument, language = "english")                                         
 
-data.set <- data.frame(preprocessed_tweet_text=unlist(sapply(theCorpus, "[[", "content")), stringsAsFactors=F)                                       
-data.set <- cbind(sentiment_label, tweet_text, data.set)                   
+data.set <- cbind(dataset, 
+                  preprocessed_tweet_text = unlist(sapply(theCorpus, "[[", "content")), 
+                  stringsAsFactors=F)                                       
+
 
 # Select data.frame to be sent to the output Dataset port
 maml.mapOutputPort("data.set")
