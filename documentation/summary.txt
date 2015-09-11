@@ -1,0 +1,2 @@
+This tutorial demonstrates the use of the Execute R Script, Feature Selection, Feature Hashing modules to train a text sentiment classification engine.
+
