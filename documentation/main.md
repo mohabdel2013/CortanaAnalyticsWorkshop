@@ -179,6 +179,7 @@ For more information about how to publish a web service, see [this tutorial](htt
 ### References
 
 **1.** Azure Marketplace Text Analytics API (https://datamarket.azure.com/dataset/amla/text-analytics)
+
 **2.** Azure Machine learning text classification template (http://gallery.azureml.net/browse?s=text)
 
 <!-- Images -->
