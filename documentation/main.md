@@ -15,7 +15,7 @@ The main steps of the tutorial are:
 - [Step 6: Evaluate model performance]
 - [Step 7: Publish prediction web service]
 - [Step 8: Consume the prediction web service]
-- [Step 9: Visualize-the-output]
+- [Step 9: Visualize the prediction output]
 
 [Step 1: Get data]:#step-1-get-data
 [Step 2: Text preprocessing using R]:#step-2-pre-process-text
@@ -25,7 +25,7 @@ The main steps of the tutorial are:
 [Step 6: Evaluate model performance]:#step-6-evaluate-model
 [Step 7: Publish prediction web service]:#step-7-publish-web-service
 [Step 8: Consume the prediction web service]:#step-8-consume-web-service
-[Step 9: Visualize-the-output]:#step-9-visualize-the-output
+[Step 9: Visualize the prediction output]:#step-9-visualize-the-output
 
  ![][image-overall]
 
