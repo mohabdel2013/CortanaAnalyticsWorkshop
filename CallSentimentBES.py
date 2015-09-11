@@ -1,4 +1,3 @@
-
 # How this works:
 #
 # 1. Assume the input is present in a local file (if the web service accepts input)
@@ -27,30 +26,13 @@ def printHttpError(httpError):
  print(json.loads(httpError.read()))
  return
 
-
-def saveBlobToFile(blobUrl, resultsLabel):
- output_file = "myresults.csv" # Replace this with the location you would like to use for your output file
- print("Reading the result from " + blobUrl)
- try:
-     # If you are using Python 3+, replace urllib2 with urllib.request in the following code
-     response = urllib2.urlopen(blobUrl)
- except urllib2.HTTPError, error:
-    printHttpError(error)
- return
-
- with open(output_file, "w+") as f:
-    f.write(response.read())
- print(resultsLabel + " have been written to the file " + output_file)
- return
-
-
 def processResults(result):
 
 
  first = True
  results = result["Results"]
  for outputName in results:
- result_blob_location = results[outputName]
+     result_blob_location = results[outputName]
      sas_token = result_blob_location["SasBlobToken"]
      base_url = result_blob_location["BaseLocation"]
      relative_url = result_blob_location["RelativeLocation"]
@@ -60,11 +42,6 @@ def processResults(result):
      print("RelativeLocation: " + relative_url)
      print("SasBlobToken: " + sas_token)
 
-
- #if (first):
- # first = False
- # url3 = base_url + relative_url + sas_token
- # saveBlobToFile(url3, "The results for " + outputName)
  return
 
 
@@ -76,7 +53,7 @@ def invokeBatchExecutionService():
     storage_container_name = "app-reviews" # Replace this with your Azure Storage Container name
 
  #input_file = "mydata.csv" # Replace this with the location of your input file
-    input_blob_name = "Sentiment140.onePercent.sample.tweets.tsv" # Replace this with the name you would like to use for your Azure blob; this needs to have the same extension as the input file 
+    input_blob_name = "reviews_the hunger games_and_Frozen.tsv" # Replace this with the name you would like to use for your Azure blob; this needs to have the same extension as the input file 
 
     api_key = "qplXEpMWX3sJ5A1IN9crWdhtc/YiboUZ+3riX3mlkKErn2BENc1DGkZ4W9cpmcNaXj8lI2NKoKYjWd7iya+D8Q==" # Replace this with the API key for the web service
     url = "https://ussouthcentral.services.azureml.net/workspaces/4ddc51f529344472ba03bccc17adbb05/services/e2f67d2f5cde4a1f91e46789f05c962e/jobs"
@@ -99,7 +76,8 @@ def invokeBatchExecutionService():
 
         "Outputs": {
 
-            "output1": { "ConnectionString": connection_string, "RelativeLocation": "/" + storage_container_name + "/results.tsv" },
+            "output1": { "ConnectionString": connection_string, 
+                        "RelativeLocation": "/" + storage_container_name + "/results-" + input_blob_name },
         },
         "GlobalParameters": {
 }
@@ -169,9 +147,3 @@ def invokeBatchExecutionService():
     return
 
 invokeBatchExecutionService()
-
-
-
-
-
-
