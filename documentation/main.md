@@ -3,9 +3,9 @@ In this tutorial, we'll explain how to to build an experiment for sentiment anal
 This tutorial demonstrates the use of the **Feature Hashing**, **Execute R Script** and **Filter-Based Feature Selection** modules to train a sentiment analysis engine. We use a data-driven machine learning approach instead of a lexicon-based approach, as the latter is known to have high precision but low coverage compared to an approach that learns from a corpus of annotated tweets. 
 The hashing features are used to train a model using the **Two-Class Support Vector Machine** (SVM), and the trained model is used to predict the public opinion on movies given Amazon free-text reviews. In general, the output predictions can be aggregated over all the reviews/tweets containing a certain keyword, such as brand, celebrity, product, book names, etc in order to find out the overall sentiment around that keyword. The tutorial is generic enough that you could use this framework to solve any text classification task given a reasonable amount of labeled training data.
 
-##Experiment Creation
+##Tutorial Outline
 
-The main steps of the experiment are:
+The main steps of the tutorial are:
 
 - [Step 1: Get data]
 - [Step 2: Text preprocessing using R]
@@ -31,11 +31,11 @@ The main steps of the experiment are:
 
 ### <a name="step-1-get-data"></a>Step 1: Get data
 
-The data used in this experiment is [Sentiment140 dataset](http://help.sentiment140.com/) (http://help.sentiment140.com), a publicly available data set created by three graduate students at Stanford University: Alec Go, Richa Bhayani, and Lei Huang. The data comprises approximately 1,600,000  automatically annotated tweets. 
+The data used in this tutorial is [Sentiment140 dataset](http://help.sentiment140.com/) (http://help.sentiment140.com), a publicly available data set created by three graduate students at Stanford University: Alec Go, Richa Bhayani, and Lei Huang. The data comprises approximately 1,600,000  automatically annotated tweets. 
 
 The tweets were collected by using the Twitter Search API and keyword search. During automatic annotation, any tweet with positive emoticons, like :), were assumed to bear positive sentiment, and tweets with negative emoticons, like :(, were supposed to bear negative polarity. Tweets containing both positive and negative emoticons were removed. Additional information about this data and the automatic annotation process can be found in the technical report written by Alec Go, Richa Bhayani and Lei Huang, *Twitter Sentiment Classification using Distant Supervision*, in 2009. 
 
-For this experiment, we extracted a 10% sample of the data. The sample is shared as a Blob in a Windows Azure Storage public account and in GitHub (https://github.com/mohabdel2013/CortanaAnalyticsWorkshop). You can get the full data set from the Sentiment140 dataset home page.  
+For this tutorial, we extracted a 10% sample of the data. The sample is shared as a Blob in a Windows Azure Storage public account and in GitHub (https://github.com/mohabdel2013/CortanaAnalyticsWorkshop). You can get the full data set from the Sentiment140 dataset home page.  
 
 Load the dataset that contains the text column into the experiment, using one of the following methods:
 
@@ -44,7 +44,7 @@ Load the dataset that contains the text column into the experiment, using one of
 
  ![][image-data-reader]
 
- 
+
 
 Each instance in the data set has 6 fields:
 
